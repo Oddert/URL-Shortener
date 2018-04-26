@@ -1,0 +1,12 @@
+code {
+    white-space: pre;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+
+.code-chunk {
+    margin-left: 50vw;
+    transform: translateX(-50%);
+    margin-top: 50px;
+}
