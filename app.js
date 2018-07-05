@@ -3,7 +3,7 @@ var express = require('express'),
     bodyParser  = require('body-parser'),
     mongo       = require('mongodb').MongoClient;
     
-var url = "mongodb://Oddert:Bugatt1rulesoK@ds259499.mlab.com:59499/freecodecamp-playground";
+var url = "mongodb://" + MADE_WITH + ":" + SECRET + "@ds259499.mlab.com:59499/freecodecamp-playground";
     
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
