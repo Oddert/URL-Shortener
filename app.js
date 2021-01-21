@@ -2,9 +2,9 @@ var express = require('express'),
     app     = express(),
     bodyParser  = require('body-parser'),
     mongo       = require('mongodb').MongoClient;
-    
+
 var url = "mongodb://Oddert:Bugatt1rulesoK@ds259499.mlab.com:59499/freecodecamp-playground";
-    
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
@@ -16,9 +16,9 @@ app.get('/', function (req, res) {
 app.get('/:number', function (req, res) {
     var inType = 'invalid';
     var input = req.params.number;
-    
+
     if (/^[0-9]*$/.test(input) === true) { inType = 'num' }
-    
+
     if (inType == 'invalid') {
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({
@@ -51,27 +51,27 @@ app.get('/:number', function (req, res) {
             error: "Something is very broken, line 32 :("
         }));
     }
-    
-    
+
+
 });
 
 app.get('/new/*', function (req, res) {
     var input = req.params[0];
     var inType = 'invalid';
-    
+
     input = /\/$/.test(input) ? input : input + '/';
-    
+
     console.log(input.toString());
-    
+
     if (/(?=.*https|http)(?=.*\w(?=\.))/.test(input) === true) { inType = 'url' }
-    
+
     if (inType == 'invalid') {
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({
             error: "That address is not valid"
         }))
     } else if (inType == 'url') {
-        
+
         mongo.connect(url, function (err, db) {
             if (err) throw err;
             var collection = db.collection('urls');
@@ -122,7 +122,7 @@ app.get('/new/*', function (req, res) {
                         })
                     }
                     assignNum(collection);
-                    
+
                 } else {
                     console.log(", JSON'ing...");
                     res.setHeader('Content-Type', 'application/json');
@@ -133,14 +133,14 @@ app.get('/new/*', function (req, res) {
                 }
             })
         });
-        
-        
+
+
     } else {
         res.send('New Route! Your request: "' + input + '" is: ' + inType);
     }
-    
+
 });
 
-app.listen(process.env.PORT, process.env.IP, function () {
+app.listen(process.env.PORT | 3000, function () {
     console.log("Server initialised on port: " + process.env.PORT);
 });
