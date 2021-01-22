@@ -1,16 +1,11 @@
+require('dotenv').config();
 var express = require('express'),
     app     = express(),
     bodyParser  = require('body-parser'),
     mongo       = require('mongodb').MongoClient;
-<<<<<<< HEAD
 
-var url = "mongodb://Oddert:Bugatt1rulesoK@ds259499.mlab.com:59499/freecodecamp-playground";
+var url = process.env.DATABASE;
 
-=======
-    
-var url = "mongodb://" + MADE_WITH + ":" + SECRET + "@ds259499.mlab.com:59499/freecodecamp-playground";
-    
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
