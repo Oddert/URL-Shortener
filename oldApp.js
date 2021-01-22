@@ -1,9 +1,10 @@
+require('dotenv').config();
 var express = require('express'),
     app     = express(),
     bodyParser  = require('body-parser'),
     mongo       = require('mongodb').MongoClient;
     
-var url = "mongodb://Oddert:Bugatt1rulesoK@ds259499.mlab.com:59499/freecodecamp-playground";
+var url = process.env.DATABASE;
     
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
