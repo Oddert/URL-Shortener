@@ -51,21 +51,12 @@ app.get('/', function (req, res) {
 
 
 app.get('/:number', function (req, res) {
-<<<<<<< HEAD
-    var inType = 'invalid';
-    var input = req.params.number;
-
-    if (/^[0-9]*$/.test(input) === true) { inType = 'num' }
-
-    if (inType == 'invalid') {
-=======
    var inType = 'invalid';
    var input = req.params.number;
    
    if (/^[0-9]*$/.test(input) === true) { inType = 'num' }
    
    if (inType == 'invalid') {
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({
             error: "This url number is invalid"
@@ -99,12 +90,7 @@ app.get('/:number', function (req, res) {
             error: "Something is very broken, line 73 :("
         }))
     }
-<<<<<<< HEAD
-
-
-=======
     
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
 });
 
 
@@ -114,13 +100,7 @@ app.get('/new/*', function (req, res) {
     var inType = 'invalid';
 
     input = /\/$/.test(input) ? input : input + '/';
-<<<<<<< HEAD
-
-    console.log(input.toString());
-
-=======
     
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
     if (/(?=.*https|http)(?=.*\w(?=\.))/.test(input) === true) { inType = 'url' }
 
     if (inType == 'invalid') {
@@ -129,13 +109,8 @@ app.get('/new/*', function (req, res) {
             error: "That address is not valid"
         }))
     } else if (inType == 'url') {
-<<<<<<< HEAD
-
-        mongo.connect(url, function (err, db) {
-=======
         
         mongo.connect(url, function (err, client) {
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
             if (err) throw err;
             var db = client.db('freecodecamp-playground');
             var collection = db.collection('urls');
@@ -178,12 +153,7 @@ app.get('/new/*', function (req, res) {
                         })
                     } // assignNum()
                     assignNum(collection);
-<<<<<<< HEAD
-
-                } else {
-=======
                 } else { // docs.length =< 0
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
                     console.log(", JSON'ing...");
                     res.setHeader('Content-Tupe', 'application/json');
                     res.send(JSON.stringify({
@@ -191,26 +161,12 @@ app.get('/new/*', function (req, res) {
                         short_url: docs[0].short_url
                     }));
                 }
-<<<<<<< HEAD
-            })
-        });
-
-
-    } else {
-        res.send('New Route! Your request: "' + input + '" is: ' + inType);
-=======
             }); // collection find => toArray
         })
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
     }
 
 });
 
-<<<<<<< HEAD
-app.listen(process.env.PORT | 3000, function () {
-    console.log("Server initialised on port: " + process.env.PORT);
-});
-=======
 
 
 app.listen(process.env.PORT | 8080, process.env.IP, function () {
@@ -247,4 +203,3 @@ mongo.connect(url, function (err, client) {
 });
 
 */
->>>>>>> ef08a06fdc754f559ceab23c9f4223e28880e944
