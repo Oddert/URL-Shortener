@@ -168,9 +168,10 @@ app.get('/new/*', function (req, res) {
 });
 
 
+const PORT = process.env.PORT || 8080
 
-app.listen(process.env.PORT | 8080, process.env.IP, function () {
-    console.log("Server initialised on port: " + process.env.PORT);
+app.listen(PORT, process.env.IP, function () {
+    console.log("Server initialised on port: " + PORT);
 });
 
 
